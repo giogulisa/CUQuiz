@@ -121,7 +121,11 @@ def take_quiz(request, pk):
     student = request.user.student
 
     if student.quizzes.filter(pk=pk).exists():
-        return render(request, 'classroom/students/quiz_list.html')
+        questions = Question.objects.filter(quiz=quiz)
+        template_name = 'classroom/students/quiz_result.html'
+        taken_quiz = TakenQuiz.objects.filter(student=request.user.student, quiz=quiz)
+        return render(request, template_name, {'questions': questions,
+                                               'quiz': quiz, 'percentage': taken_quiz[0].percentage})
 
     total_questions = quiz.questions.count()
     unanswered_questions = student.get_unanswered_questions(quiz)
