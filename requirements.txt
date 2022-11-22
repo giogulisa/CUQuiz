@@ -10,7 +10,7 @@ django-nested-admin==3.3.2
 filelock==3.0.12
 more-itertools==8.2.0
 packaging==20.1
-Pillow==8.3.2
+Pillow==9.3.0
 pluggy==0.13.1
 py==1.10.0
 pyparsing==2.4.6
